@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 yt-dlp = "*"
+ffmpeg-python = "*"
 
 [dev-packages]
 black = "*"
