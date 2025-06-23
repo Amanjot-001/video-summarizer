@@ -92,4 +92,5 @@ Desktop.ini
 *.sublime-project
 
 # additionals
-downloads/
+downloads/*
+transcripts/*.json
