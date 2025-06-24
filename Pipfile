@@ -8,6 +8,11 @@ yt-dlp = "*"
 ffmpeg-python = "*"
 openai-whisper = {git = "https://github.com/openai/whisper.git"}
 torch = "*"
+langchain = "*"
+transformers = "*"
+accelerate = "*"
+sentence-transformers = "*"
+langchain-community = "*"
 
 [dev-packages]
 black = "*"
