@@ -8,6 +8,7 @@ from summarization.summarizer import (
     save_summary,
 )
 from embeddings.embedder import build_faiss_index
+from qna.qa_bot import load_qna_chain
 import os
 
 # video_url = "https://www.youtube.com/watch?v=EQsQeBsB6YI"
@@ -28,3 +29,11 @@ if __name__ == "__main__":
     llm = get_local_hf_llm()
     summary = summarize_chunks(chunks, llm)
     save_summary(summary, f"summaries/{os.path.splitext(os.path.basename(audio_path))[0]}.txt")
+    
+    qa_chain = load_qna_chain()
+    while True:
+        question = input("\nAsk a question about the video (or 'exit'): ")
+        if question.lower() == "exit":
+            break
+        answer = qa_chain.run(question)
+        print("💬", answer)
