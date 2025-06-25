@@ -7,6 +7,7 @@ from summarization.summarizer import (
     summarize_chunks,
     save_summary,
 )
+from embeddings.embedder import build_faiss_index
 import os
 
 # video_url = "https://www.youtube.com/watch?v=EQsQeBsB6YI"
@@ -21,6 +22,8 @@ if __name__ == "__main__":
 
     segments = load_transcript(transcript_path)
     chunks = chunk_segments(segments, max_chars=1000)
+    
+    build_faiss_index(chunks)
     
     llm = get_local_hf_llm()
     summary = summarize_chunks(chunks, llm)

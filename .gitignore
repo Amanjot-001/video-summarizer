@@ -95,3 +95,4 @@ Desktop.ini
 downloads/*
 transcripts/*.json
 summaries/
+faiss_index/

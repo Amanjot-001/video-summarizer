@@ -12,7 +12,9 @@ langchain = "*"
 transformers = "*"
 accelerate = "*"
 sentence-transformers = "*"
+langchain-huggingface = "*"
 langchain-community = "*"
+faiss-cpu = "*"
 
 [dev-packages]
 black = "*"
