@@ -11,14 +11,14 @@ from embeddings.embedder import build_faiss_index
 from qna.qa_bot import load_qna_chain
 import os
 
-# video_url = "https://www.youtube.com/watch?v=EQsQeBsB6YI"
-video_url = "https://www.youtube.com/watch?v=QUTYxwTsbiM"
+# video_url = "https://www.youtube.com/watch?v=QUTYxwTsbiM" # simple english story
+video_url = "https://www.youtube.com/watch?v=aMx0d42wzBs" # french
 
 if __name__ == "__main__":
     youtube_url = video_url
     audio_path, title = download_youtube_audio(youtube_url)
 
-    transcript, segments, language = transcribe_audio(audio_path, model_size="tiny")
+    transcript, segments, language = transcribe_audio(audio_path, model_size="small")
     transcript_path = save_transcript(audio_path, transcript, segments, language)
 
     segments = load_transcript(transcript_path)
