@@ -3,7 +3,7 @@ import os
 from langchain_community.document_loaders import TextLoader
 from langchain.docstore.document import Document
 from langchain.chains.summarize import load_summarize_chain
-from langchain_community.llms import HuggingFacePipeline
+from langchain_huggingface import HuggingFacePipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 
 
@@ -42,10 +42,9 @@ def get_local_hf_llm(model_name="facebook/bart-large-cnn"):
 def summarize_chunks(chunks, llm):
     docs = [Document(page_content=chunk) for chunk in chunks]
 
-    # You can also try `refine` instead of `map_reduce`
-    chain = load_summarize_chain(llm, chain_type="map_reduce", verbose=True)
-    summary = chain.run(docs)
-    return summary
+    chain = load_summarize_chain(llm, chain_type="map_reduce", verbose=False)
+    summary = chain.invoke(docs)
+    return summary['output_text'] if isinstance(summary, dict) else str(summary)
 
 
 def save_summary(summary: str, output_path: str):

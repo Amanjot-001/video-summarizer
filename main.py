@@ -35,5 +35,5 @@ if __name__ == "__main__":
         question = input("\nAsk a question about the video (or 'exit'): ")
         if question.lower() == "exit":
             break
-        answer = qa_chain.run(question)
-        print("💬", answer)
+        answer = qa_chain.invoke({"question": question})
+        print("💬", answer['answer'])
