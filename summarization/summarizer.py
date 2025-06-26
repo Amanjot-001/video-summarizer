@@ -6,7 +6,6 @@ from langchain.chains.summarize import load_summarize_chain
 from langchain_huggingface import HuggingFacePipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 
-
 def load_transcript(json_path: str):
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)

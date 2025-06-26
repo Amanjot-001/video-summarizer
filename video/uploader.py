@@ -9,7 +9,6 @@ def process_uploaded_video(video_path: str, output_dir: str = "uploads"):
     title = f"{base_name}_{unique_id}"
     audio_path = os.path.join(output_dir, f"{title}.mp3")
 
-    # Use ffmpeg to extract audio
     command = [
         "ffmpeg",
         "-i", video_path,
