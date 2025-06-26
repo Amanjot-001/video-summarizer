@@ -1,5 +1,6 @@
 from transcription.whisper_transcriber import transcribe_audio, save_transcript
 from video.downloader import download_youtube_audio
+from video.uploader import process_uploaded_video
 from summarization.summarizer import (
     load_transcript,
     chunk_segments,
@@ -14,9 +15,16 @@ import os
 # video_url = "https://www.youtube.com/watch?v=QUTYxwTsbiM" # simple english story
 video_url = "https://www.youtube.com/watch?v=aMx0d42wzBs" # french
 
-if __name__ == "__main__":
-    youtube_url = video_url
-    audio_path, title = download_youtube_audio(youtube_url)
+if __name__ == "__main__":    
+    mode = "1";
+    if mode == "1":
+        youtube_url = video_url
+        audio_path, title = download_youtube_audio(youtube_url)
+    elif mode == "2":
+        file_path = input("📁 Enter path to local video file (e.g., .mp4): ")
+        audio_path, title = process_uploaded_video(file_path)
+    else:
+        raise ValueError("Invalid input. Choose 1 or 2.")
 
     transcript, segments, language = transcribe_audio(audio_path, model_size="small")
     transcript_path = save_transcript(audio_path, transcript, segments, language)

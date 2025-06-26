@@ -16,6 +16,7 @@ langchain = "*"
 langchain-community = "*"
 langchain-ollama = "*"
 langchain-huggingface = "*"
+streamlit = "*"
 
 [dev-packages]
 black = "*"
